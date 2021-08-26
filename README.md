@@ -171,6 +171,18 @@ secret = "egjekgj3iekeEEkej3i3j3iejjwiEejiejeEeijg"          # 본인 값으로 
 upbit = Upbit(access, secret)
 ```
 
+#### Adding Proxy
+```python
+access = "73kVqowGQOGEjdR31221j31j2ifekjkgjekgjekg"          # 본인 값으로 변경
+secret = "egjekgj3iekeEEkej3i3j3iejjwiEejiejeEeijg"          # 본인 값으로 변경
+proxies = {
+        "http": "http://127.0.0.1:8080",
+        "https": "https://127.0.0.1:8080"
+    }
+upbit = Upbit(access, secret, proxies)
+```
+
+
 #### 잔고 조회
 `get_balance` 메서드는 입력받은 티커의 보유 수량 정보를 조회합니다.
 
