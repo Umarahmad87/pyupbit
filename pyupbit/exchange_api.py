@@ -56,9 +56,10 @@ def get_tick_size(price, method="floor"):
 
 
 class Upbit:
-    def __init__(self, access, secret):
+    def __init__(self, access, secret, proxies=None):
         self.access = access
         self.secret = secret
+        self.proxies = proxies
 
 
     def _request_headers(self, query=None):
@@ -94,7 +95,7 @@ class Upbit:
         """
         url = "https://api.upbit.com/v1/accounts"
         headers = self._request_headers()
-        result = _send_get_request(url, headers=headers)
+        result = _send_get_request(url, headers=headers, proxies=self.proxies)
         if contain_req:
             return result
         else:
@@ -248,7 +249,7 @@ class Upbit:
             url = "https://api.upbit.com/v1/orders/chance"
             data = {"market": ticker}
             headers = self._request_headers(data)
-            result = _send_get_request(url, headers=headers, data=data)
+            result = _send_get_request(url, headers=headers, data=data, proxies=self.proxies)
             if contain_req:
                 return result
             else:
@@ -278,7 +279,7 @@ class Upbit:
                 url = "https://api.upbit.com/v1/order"
                 data = {'uuid': ticker_or_uuid}
                 headers = self._request_headers(data)
-                result = _send_get_request(url, headers=headers, data=data)
+                result = _send_get_request(url, headers=headers, data=data, proxies=self.proxies)
             else :
 
                 url = "https://api.upbit.com/v1/orders"
@@ -311,7 +312,7 @@ class Upbit:
             url = "https://api.upbit.com/v1/order"
             data = {'uuid': uuid}
             headers = self._request_headers(data)
-            result = _send_get_request(url, headers=headers, data=data)
+            result = _send_get_request(url, headers=headers, data=data, proxies=self.proxies)
             if contain_req:
                 return result
             else:
@@ -332,7 +333,7 @@ class Upbit:
             url = "https://api.upbit.com/v1/order"
             data = {"uuid": uuid}
             headers = self._request_headers(data)
-            result = _send_delete_request(url, headers=headers, data=data)
+            result = _send_delete_request(url, headers=headers, data=data, proxies=self.proxies)
             if contain_req:
                 return result
             else:
@@ -360,7 +361,7 @@ class Upbit:
                     "price": str(price),
                     "ord_type": "limit"}
             headers = self._request_headers(data)
-            result = _send_post_request(url, headers=headers, data=data)
+            result = _send_post_request(url, headers=headers, data=data, proxies=self.proxies)
             if contain_req:
                 return result
             else:
@@ -384,7 +385,7 @@ class Upbit:
                     "price": str(price),
                     "ord_type": "price"}
             headers = self._request_headers(data)
-            result = _send_post_request(url, headers=headers, data=data)
+            result = _send_post_request(url, headers=headers, data=data, proxies=self.proxies)
             if contain_req:
                 return result
             else:
@@ -408,7 +409,7 @@ class Upbit:
                     "volume": str(volume),
                     "ord_type": "market"}
             headers = self._request_headers(data)
-            result = _send_post_request(url, headers=headers, data=data)
+            result = _send_post_request(url, headers=headers, data=data, proxies=self.proxies)
             if contain_req:
                 return result
             else:
@@ -434,7 +435,7 @@ class Upbit:
                     "price": str(price),
                     "ord_type": "limit"}
             headers = self._request_headers(data)
-            result = _send_post_request(url, headers=headers, data=data)
+            result = _send_post_request(url, headers=headers, data=data, proxies=self.proxies)
             if contain_req:
                 return result
             else:
@@ -461,7 +462,7 @@ class Upbit:
             url = "https://api.upbit.com/v1/withdraw"
             data = {"uuid": uuid, "currency": currency}
             headers = self._request_headers(data)
-            result = _send_get_request(url, headers=headers, data=data)
+            result = _send_get_request(url, headers=headers, data=data, proxies=self.proxies)
             if contain_req:
                 return result
             else:
@@ -491,7 +492,7 @@ class Upbit:
                     "secondary_address": secondary_address,
                     "transaction_type": transaction_type}
             headers = self._request_headers(data)
-            result = _send_post_request(url, headers=headers, data=data)
+            result = _send_post_request(url, headers=headers, data=data, proxies=self.proxies)
             if contain_req:
                 return result
             else:
@@ -513,7 +514,7 @@ class Upbit:
             url = "https://api.upbit.com/v1/withdraws/krw"
             data = {"amount": amount}
             headers = self._request_headers(data)
-            result = _send_post_request(url, headers=headers, data=data)
+            result = _send_post_request(url, headers=headers, data=data, proxies=self.proxies)
             if contain_req:
                 return result
             else:
@@ -541,7 +542,7 @@ class Upbit:
     def get_deposit_withdraw_status(self, contain_req=False):
         url = "https://api.upbit.com/v1/status/wallet"
         headers = self._request_headers()
-        result = _send_get_request(url, headers=headers)
+        result = _send_get_request(url, headers=headers, proxies=self.proxies)
         if contain_req:
             return result
         else:
@@ -552,7 +553,7 @@ class Upbit:
     def get_api_key_list(self, contain_req=False):
         url = "https://api.upbit.com/v1/api_keys"
         headers = self._request_headers()
-        result = _send_get_request(url, headers=headers)
+        result = _send_get_request(url, headers=headers, proxies=self.proxies)
         if contain_req:
             return result
         else:

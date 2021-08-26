@@ -51,8 +51,8 @@ def _call_public_api(url, **params):
         raise_error(resp)
 
 
-def _send_post_request(url, headers=None, data=None):
-    resp = requests.post(url, headers=headers, data=data)
+def _send_post_request(url, headers=None, data=None, proxies=None):
+    resp = requests.post(url, headers=headers, data=data, proxies=proxies)
     if HTTP_RESP_CODE_START <= resp.status_code < HTTP_RESP_CODE_END:
         remaining_req = resp.headers.get('Remaining-Req')
         limit = _parse_remaining_req(remaining_req)
@@ -62,8 +62,8 @@ def _send_post_request(url, headers=None, data=None):
         raise_error(resp)
 
 
-def _send_get_request(url, headers=None, data=None):
-    resp = requests.get(url, headers=headers, data=data)
+def _send_get_request(url, headers=None, data=None, proxies=None):
+    resp = requests.get(url, headers=headers, data=data, proxies=proxies)
     if HTTP_RESP_CODE_START <= resp.status_code < HTTP_RESP_CODE_END:
         remaining_req = resp.headers.get('Remaining-Req')
         limit = _parse_remaining_req(remaining_req)
@@ -73,8 +73,8 @@ def _send_get_request(url, headers=None, data=None):
         raise_error(resp)
 
 
-def _send_delete_request(url, headers=None, data=None):
-    resp = requests.delete(url, headers=headers, data=data)
+def _send_delete_request(url, headers=None, data=None, proxies=None):
+    resp = requests.delete(url, headers=headers, data=data, proxies=proxies)
     if HTTP_RESP_CODE_START <= resp.status_code < HTTP_RESP_CODE_END:
         remaining_req = resp.headers.get('Remaining-Req')
         limit = _parse_remaining_req(remaining_req)
