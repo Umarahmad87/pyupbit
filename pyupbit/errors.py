@@ -108,5 +108,7 @@ def raise_error(resp):
             raise JwtVerification()
         elif name == "invalid_access_key":
             raise InValidAccessKey()
+        raise Exception(message)
     else:
-        raise UpbitError()
+        raise Exception(message)
+        # raise UpbitError()

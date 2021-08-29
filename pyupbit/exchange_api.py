@@ -392,7 +392,7 @@ class Upbit:
                 return result[0]
         except Exception as x:
             print(x.__class__.__name__)
-            return None
+            raise Exception(x)
 
     def sell_market_order(self, ticker, volume, contain_req=False):
         """
@@ -416,7 +416,7 @@ class Upbit:
                 return result[0]
         except Exception as x:
             print(x.__class__.__name__)
-            return None
+            raise Exception(x)
 
     def sell_limit_order(self, ticker, price, volume, contain_req=False):
         """
